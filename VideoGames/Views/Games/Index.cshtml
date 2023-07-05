@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Games>
+
+<h2>Games</h2>
+<div style="display: block">
+    <a href="/Games/AddGame/">Create a New Game</a>
+</div>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Genre</th>
+        <th>ImageURL</th>
+
+    </tr>
+
+    @foreach (var game in @Model)
+    {
+        <tr>
+            <td><a href=/Games/ViewGame/@game.ID>@game.ID</a></td>
+            <td>@game.Title</td>
+            <td>@game.Description</td>
+            <td>@game.Price</td>
+            <td>@game.Genre</td>
+            <td><img src="@game.ImageURL" style="height: 40px; width:auto; border-radius: 3px; box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);" /></td>
+
+        </tr>
+    }
+</table>
+

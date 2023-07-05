@@ -1,0 +1,16 @@
+﻿@model Games
+
+<h2>Update Game @Model.Title</h2>
+
+@using (Html.BeginForm("UpdateGameToDatabase", "Game", "Post"))
+{
+    <input asp-for="ID" type="hidden" value="@Model.ID" />
+
+    <label asp-for="Title" class="control-label">Title</label>
+    <input type="text" name="Title" class="form-control" value="@Model.Title" />
+
+    <label asp-for="Price" class="control-label">Price</label>
+    <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price" />
+
+    <input type="submit" value="Update Game" class="btn btn-primary" />
+}
