@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<Games>
 
 <h2>Games</h2>
-<div style="display: block">
-    <a href="/Games/AddGame/">Create a New Game</a>
+<div class="text-center">
+    <div style="display: inline-block">
+        <a href="/Games/AddGame/" class="btn btn-primary square-btn">Add a New Game</a>
+    </div>
 </div>
 <table class="table">
     <tr>
@@ -12,19 +14,17 @@
         <th>Price</th>
         <th>Genre</th>
         <th>ImageURL</th>
-
     </tr>
 
-    @foreach (var game in @Model)
+    @foreach (var game in Model)
     {
         <tr>
-            <td><a href=/Games/ViewGame/@game.ID>@game.ID</a></td>
+            <td><a href="/Games/ViewGame/@game.ID">@game.ID</a></td>
             <td>@game.Title</td>
             <td>@game.Description</td>
             <td>@game.Price</td>
             <td>@game.Genre</td>
             <td><img src="@game.ImageURL" style="height: 40px; width:auto; border-radius: 3px; box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);" /></td>
-
         </tr>
     }
 </table>
@@ -35,8 +35,16 @@
         font-family: Courier New, Courier, monospace; /* Replace 'YourCustomFont' with the name of your custom font */
         color: #ffffff; /* Text color */
     }
+
     .table {
-        color:white;
+        color: white; /* Text color inside the table */
+    }
+
+    .square-btn {
+        width: 150px; /* Adjust the width as per your preference */
+        height: 50px; /* Adjust the height as per your preference */
+        border-radius: 0px; /* Remove the border-radius to make it square */
+        font-weight: bold;
+        background: red;
     }
 </style>
-

@@ -19,38 +19,62 @@
         <td>@Model.Price</td>
         <td>@Model.Genre</td>
         <td>@Model.ImageURL</td>
-
     </tr>
-
-
 </table>
 
 <div class="text-center">
     <img src="@Model.ImageURL" style="height:300px; width: auto; border-radius: 7px; box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);" />
 </div>
 
-<div style="display: block">
-    <a href="/Games/UpdateGame/@Model.ID">Update this Game</a>
-</div>
-
-<div style="display: block">
+<div class="button-container">
+    <a href="/Games/UpdateGame/@Model.ID" class="square-button">Update this Game</a>
 
     @using (Html.BeginForm("DeleteGame", "Games", "Post"))
     {
         <input type="hidden" asp-for="ID" value="@Model.ID" />
-        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this game" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this game" class="square-button" />
     }
 </div>
+
 <style>
     body {
         background-color: #000000; /* Black background */
-        font-family: Courier New, Courier, monospace; /* Replace 'YourCustomFont' with the name of your custom font */
         color: #ffffff; /* Text color */
     }
 
     .table {
         color: white; /* Text color inside the table */
     }
+
+    a {
+        color: #ffffff; /* Link color */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    .button-container {
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Align items horizontally in the center */
+        margin-top: 20px; /* Add some spacing from the previous element */
+    }
+
+    .square-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0 10px; /* Add some spacing between buttons */
+        background-color: red; /* Button background color (red) */
+        color: #ffffff; /* Button text color */
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        .square-button:hover {
+            background-color: #ac1818; /* Button background color on hover (darker red) */
+            cursor: pointer;
+        }
 </style>
 
 
