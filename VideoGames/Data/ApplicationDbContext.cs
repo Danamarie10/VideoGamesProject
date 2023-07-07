@@ -14,6 +14,8 @@ namespace VideoGames.Data
         }
         public DbSet<AppUser> AppUser { get; set; }
 
+       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

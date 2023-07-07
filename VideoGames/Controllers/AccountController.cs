@@ -27,6 +27,16 @@ namespace VideoGames.Controllers
             loginViewModel.ReturnUrl = returnUrl ?? Url.Content("~/");
             return View(loginViewModel);
         }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        //public IActionResult ForgotPassword()
+        //{
+
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -34,10 +44,15 @@ namespace VideoGames.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, loginViewModel.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, loginViewModel.RememberMe, lockoutOnFailure: true);
                 if(result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
+                }
+
+                if(result.IsLockedOut)
+                {
+                    return View("Lockout");
                 }
                 else
                 {

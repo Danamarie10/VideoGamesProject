@@ -1,50 +1,68 @@
-﻿@model IEnumerable<Games>
-
-<h2>Games</h2>
-<div class="text-center">
-    <div style="display: inline-block">
-        <a href="/Games/AddGame/" class="btn btn-primary square-btn">Add a New Game</a>
-    </div>
-</div>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Genre</th>
-        <th>ImageURL</th>
-    </tr>
-
-    @foreach (var game in Model)
-    {
-        <tr>
-            <td><a href="/Games/ViewGame/@game.ID">@game.ID</a></td>
-            <td>@game.Title</td>
-            <td>@game.Description</td>
-            <td>@game.Price</td>
-            <td>@game.Genre</td>
-            <td><img src="@game.ImageURL" style="height: 40px; width:auto; border-radius: 3px; box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);" /></td>
-        </tr>
-    }
-</table>
-
-<style>
+﻿<style>
     body {
-        background-color: #000000; /* Black background */
-        font-family: Courier New, Courier, monospace; /* Replace 'YourCustomFont' with the name of your custom font */
-        color: #ffffff; /* Text color */
+        background: rgb(2, 0, 36);
+        background: linear-gradient( 90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 23, 0.891281512605042) 51%, rgba(255, 0, 78, 0.7960434173669468) 79% );
+        font-family: Courier New, Courier, monospace;
+        color: #ffffff;
     }
 
-    .table {
-        color: white; /* Text color inside the table */
+    .game-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
     }
 
-    .square-btn {
-        width: 150px; /* Adjust the width as per your preference */
-        height: 50px; /* Adjust the height as per your preference */
-        border-radius: 0px; /* Remove the border-radius to make it square */
+    .game {
+        width: 300px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .game-title {
+        font-size: 24px;
         font-weight: bold;
-        background: red;
+        margin-bottom: 10px;
+    }
+
+    .game-image {
+        width: 100%;
+        height: auto;
+        border-radius: 3px;
+        box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);
+    }
+
+    .game-description {
+        margin-top: 10px;
+    }
+
+    .game-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .game-info-item {
+        font-weight: bold;
+    }
+
+    .game-genre {
+        color: blue;
     }
 </style>
+
+<div class="game-container">
+    @foreach (var game in Model)
+    {
+        <div class="game">
+            <div class="game-title">@game.Title</div>
+            <img class="game-image" src="@game.ImageURL" alt="Game Image" />
+            <div class="game-description">@game.Description</div>
+            <div class="game-info">
+                <div class="game-info-item">Genre: <span class="game-genre">@game.Genre</span></div>
+                <div class="game-info-item">Price: <span class="game-price">@game.Price</span></div>
+            </div>
+        </div>
+    }
+</div>
