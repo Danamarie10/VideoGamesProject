@@ -1,4 +1,4 @@
-﻿﻿@using VideoGames.View_Models
+﻿@using VideoGames.View_Models
 @model RegisterViewModel
 
 <h1 class="text-info">Register</h1>
@@ -12,14 +12,13 @@
             <input asp-for="UserName" class="form-control" />
             <span asp-validation-for="UserName" class="text-danger"></span>
         </div>
+    </div>
     <div class="form-group">
         <label asp-for="Email" class="col-md-2"></label>
         <div class="col-md-10">
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-    </div>
-   
     </div>
     <div class="form-group">
         <label asp-for="Password" class="col-md-2"></label>
@@ -35,8 +34,8 @@
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
-    <div class="form-group">
-        <div class="offset-md-2 col-md-10">
+    <div class="form-group" style="margin-top: 20px;">
+        <div class="col-md-12 text-left">
             <button type="submit" class="btn btn-success">Register</button>
         </div>
     </div>
@@ -52,15 +51,18 @@
 
     .form-control {
         color: white; /* Text color inside the text boxes */
-        color: blue;
     }
 
     .text-danger {
         color: red; /* Error message color */
     }
+
     .btn {
-        background-color:blue;
+        background-color: blue;
     }
 
+    .text-left {
+        text-align: left;
+    }
 </style>
 
