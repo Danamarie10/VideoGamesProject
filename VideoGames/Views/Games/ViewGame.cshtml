@@ -1,39 +1,28 @@
 ﻿@model Games
 
-<h3>@Model.ID Information</h3>
+<div class="game-info">
+    <h3>@Model.ID Information</h3>
 
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Genre</th>
-        <th>ImageURL</th>
-    </tr>
+    <div class="game-details">
+        <div class="game-info-item"><strong>ID:</strong> @Model.ID</div>
+        <div class="game-info-item"><strong>Title:</strong> @Model.Title</div>
+        <div class="text-center">
+            <img src="@Model.ImageURL" style="height:300px; width: auto; border-radius: 7px; box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);" />
+        </div>
+        <div class="game-info-item"><strong>Description:</strong> @Model.Description</div>
+        <div class="game-info-item"><strong>Genre:</strong> @Model.Genre</div>
+        <div class="game-info-item"><strong>Price:</strong> @Model.Price</div>
+    </div>
 
-    <tr>
-        <td>@Model.ID</td>
-        <td>@Model.Title</td>
-        <td>@Model.Description</td>
-        <td>@Model.Price</td>
-        <td>@Model.Genre</td>
-        <td>@Model.ImageURL</td>
-    </tr>
-</table>
+    <div class="button-container">
+        <a href="/Games/UpdateGame/@Model.ID" class="square-button">Update this Game</a>
 
-<div class="text-center">
-    <img src="@Model.ImageURL" style="height:300px; width: auto; border-radius: 7px; box-shadow: 0 10px 10px 0 rgba(10, 11, 14, 0.6);" />
-</div>
-
-<div class="button-container">
-    <a href="/Games/UpdateGame/@Model.ID" class="square-button">Update this Game</a>
-
-    @using (Html.BeginForm("DeleteGame", "Games", "Post"))
-    {
-        <input type="hidden" asp-for="ID" value="@Model.ID" />
-        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this game" class="square-button" />
-    }
+        @using (Html.BeginForm("DeleteGame", "Games", "Post"))
+        {
+            <input type="hidden" asp-for="ID" value="@Model.ID" />
+            <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this game" class="square-button" />
+        }
+    </div>
 </div>
 
 <style>
@@ -43,27 +32,39 @@
         color: #ffffff; /* Text color */
     }
 
-    .table {
-        color: white; /* Text color inside the table */
+    .game-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px; /* Add some spacing from the previous element */
     }
 
-    a {
-        color: #ffffff; /* Link color */
-        text-decoration: none; /* Remove underline from links */
+    .game-details {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .game-info-item {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .text-center {
+        text-align: center;
     }
 
     .button-container {
-        display: flex; /* Use flexbox */
-        justify-content: center; /* Align items horizontally in the center */
-        margin-top: 20px; /* Add some spacing from the previous element */
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
     }
 
     .square-button {
         display: inline-block;
         padding: 10px 20px;
-        color: blue;
-        margin: 0 10px; /* Add some spacing between buttons */
-        color: #ffffff; /* Button text color */
+        margin: 0 10px;
+        color: #ffffff;
+        background-color: blue;
         border: none;
         border-radius: 5px;
         text-align: center;
@@ -73,7 +74,7 @@
     }
 
         .square-button:hover {
-            
+            background-color: darkblue;
             cursor: pointer;
         }
 </style>

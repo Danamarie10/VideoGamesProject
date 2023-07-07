@@ -20,6 +20,17 @@
         padding: 20px;
     }
 
+    .game-id {
+        font-size: 18px;
+        font-weight: bold;
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
     .game-title {
         font-size: 24px;
         font-weight: bold;
@@ -48,14 +59,39 @@
     }
 
     .game-genre {
-        color: blue;
+        color:#ffffff ;
     }
+
+    .square-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 0 10px;
+        color: #ffffff;
+        background-color: blue;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        .square-btn:hover {
+            background-color: darkblue;
+        }
 </style>
+
+<h2 style="text-align: center;">List of Games</h2>
 
 <div class="game-container">
     @foreach (var game in Model)
     {
         <div class="game">
+            <div class="game-id">
+                <a href="/Games/ViewGame/@game.ID">
+                    @game.ID
+                </a>
+            </div>
             <div class="game-title">@game.Title</div>
             <img class="game-image" src="@game.ImageURL" alt="Game Image" />
             <div class="game-description">@game.Description</div>
@@ -65,4 +101,8 @@
             </div>
         </div>
     }
+</div>
+
+<div style="text-align: center;">
+    <a href="/Games/AddGame" class="square-btn">Add a New Game</a>
 </div>
